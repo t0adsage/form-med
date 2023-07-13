@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TS Form</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.0/jquery.js"></script> <!--  jquery -->
+    <link rel="stylesheet" href="tsform/tsform.css"> <!-- Стиль формы -->
+</head>
+
+<body>
+    <!-- Начало формы -->
+    <center>
+        <div id="tsorder_form">
+            <div id="tsorder_form_place">
+                <center>
+                    <img src="./tsform/tsemblem.png" style="max-width: 100px;">
+                    <h2> Официальный бланк заявки </h2>
+                    <span style="color: blue; font-size: 14px;">
+                        <i> №31415, <span>
+                                <script type="text/javascript">
+                                    var now = Date.now(),
+                                        one_month = 1000 * 60 * 60 * 24 * 0;
+
+                                    document.write(new Date(now - one_month).toLocaleDateString());
+                                </script>
+                            </span> </i>
+                    </span>
+                </center>
+                <div>
+                    <span style="font-size: 15px;"> Для получения препарата <br class="tsbreak">«Product_name» по
+                        региональной льготной программе <br class="tsbreak">
+
+                        <br>
+
+                        Старая цена: <span style="text-decoration:line-through"><span
+                                style="color: red;">50$</span></span>
+
+                        <br>
+                        Новая цена: <span style="font-weight:bold; color: blue ">25$</span>
+                    </span>
+                </div>
+                <div
+                    style="margin: 25px 10px 15px 10px; border: 2px solid #0299ff; padding: 10px; line-height: 18px !important; ">
+                    Чтобы получить <br class="tsbreak">«Product_name» по акции,
+                    напишите Ваше имя и контактный телефон в поле
+                    ниже и нажмите на синюю кнопку.
+                </div>
+
+                <form>
+                    <select name="country">
+                        <option value="RU">Россия</option>
+                    </select>
+                    <label class="tsblock_form_label">Напишите ваше
+                        имя:</label>
+                    <input type="text" name="name" placeholder="Ваше имя" required>
+                    <label class="tsblock_form_label">Напишите номер
+                        телефона:</label>
+
+                    <input id="phone" type="tel" name="phone" placeholder="Ваш номер телефона" required><br>
+
+                    <button class="tsbut" type="submit">Заказать
+                    </button>
+                </form>
+
+                <span> Действие вашей скидки истекает через: </span>
+                <div id="tsform_order" style="display:block; margin-top: 5px;">
+                    <span id="tstimer"></span>
+                    <br><br>
+                </div>
+            </div>
+        </div>
+    </center>
+    <!-- Скрипт таймера формы -->
+    <script>
+        jQuery(function ($) {
+            var spd = 100;
+            var spdVal = 10;
+            var cntDown = 10 * 60 * spdVal;
+            setInterval(function () {
+                var mn, sc, ms;
+                cntDown--;
+                if (cntDown < 0) {
+                    return false;
+                }
+                mn = Math.floor(cntDown / spdVal / 60);
+                mn = mn < 10 ? "0" + mn : mn;
+                sc = Math.floor((cntDown / spdVal) % 60);
+                sc = sc < 10 ? "0" + sc : sc;
+                ms = Math.floor(cntDown % spdVal);
+                ms = ms < 10 ? "0" + ms : ms;
+                var result = mn + ":" + sc;
+                if (document.getElementById("tstimer")) {
+                    document.getElementById("tstimer").innerHTML = result;
+                }
+            }, spd);
+        });
+
+    </script>
+    <!-- Конец формы -->
+</body>
+
+</html>

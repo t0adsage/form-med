@@ -185,7 +185,7 @@ a.button:hover {
 
 @media screen and (max-width: 410px) {
 	#tsorder_form {
-		padding: 15px;
+		padding: 50px;
 	}
 
 	@media screen and (max-width: 349px) {
